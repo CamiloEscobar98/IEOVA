@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function lista_capacitantes(Request $request)
     {
         $request->user()->authorizeRolesSession(['administrador']);
-        $capacitantes = \App\Models\Role::where('name', 'capacitante')->first()->users()->orderBy('id', 'DESC')->paginate(6);
+        $capacitantes = \App\Models\Role::where('name', 'estudiante')->first()->users()->orderBy('id', 'DESC')->paginate(6);
         $documents_type = \App\Models\Document_type::all();
         return view('auth.lists.lista-capacitantes', ['capacitantes' => $capacitantes, 'document_types' => $documents_type]);
     }
@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function lista_capacitadores(Request $request)
     {
         $request->user()->authorizeRolesSession(['administrador']);
-        $capacitadores = \App\Models\Role::where('name', 'capacitador')->first()->users()->orderBy('id', 'DESC')->paginate(6);
+        $capacitadores = \App\Models\Role::where('name', 'docente')->first()->users()->orderBy('id', 'DESC')->paginate(6);
         $documents_type = \App\Models\Document_type::all();
         return view('auth.lists.lista-capacitadores', ['capacitadores' => $capacitadores, 'document_types' => $documents_type]);
     }
@@ -36,7 +36,7 @@ class HomeController extends Controller
     public function lista_tematicas(Request $request)
     {
         $request->user()->authorizeRolesSession(['administrador']);
-        $capacitadores = \App\Models\Role::where('name', 'capacitador')->first()->users;
+        $capacitadores = \App\Models\Role::where('name', 'docente')->first()->users;
         $tematicas = \App\Models\Topic::paginate(5);
         return view('auth.lists.lista-tematicas', ['tematicas' => $tematicas, 'capacitadores' => $capacitadores]);
     }

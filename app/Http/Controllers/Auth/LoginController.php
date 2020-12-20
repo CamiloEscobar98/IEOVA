@@ -62,10 +62,10 @@ class LoginController extends Controller
             if ($this->attemptLogin($request)) {
                 switch ($request->role_id) {
                     case 2:
-                        session(['role' => 'capacitador']);
+                        session(['role' => 'estudiante']);
                         break;
                     case 3:
-                        session(['role' => 'capacitante']);
+                        session(['role' => 'docente']);
                         break;
                     default:
                         session(['role' => 'administrador']);

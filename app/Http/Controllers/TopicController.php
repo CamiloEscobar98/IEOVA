@@ -24,7 +24,7 @@ class TopicController extends Controller
 
     public function show(\App\Models\Topic $topic)
     {
-        $capacitadores = \App\Models\Role::where('name', 'capacitador')->first()->users;
+        $capacitadores = \App\Models\Role::where('name', 'docente')->first()->users;
         $myusers = $topic->users;
         $capsules = $topic->capsules()->paginate(5);
         return view('auth.profiles.tema', [
@@ -55,7 +55,7 @@ class TopicController extends Controller
             'user_id' => $capacitador->id
         ]);
         if ($update) {
-            return redirect()->back()->with('create_complete', 'Se actualizó el capacitador de la temática');
+            return redirect()->back()->with('create_complete', 'Se actualizó el docente de la temática');
         }
         return redirect()->back()->with('create_failed', 'No se pudo actualizar correctamente.');
     }

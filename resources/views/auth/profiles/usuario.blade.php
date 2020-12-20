@@ -184,76 +184,119 @@
                 </div>
             </div>
         </div>
+        @if ($usuario->hasRole('docente'))
+            <div class="row justify-content-center">
+                <div class="table-responsive">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 mx-auto">
+                        <div class="card">
+                            <div class="card-header bg-translucent-white font-weight-bold">
+                                <h2 class="mt-3"> Temáticas asignadas</h2>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped table-bordered">
+                                    <thead class="bg-default text-white">
+                                        <tr>
+                                            <th>Temática</th>
+                                            <th>¿Tiene juego?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($topics as $topic)
+                                            <tr class="text-center">
+                                                <td><a href="{{route('topic.show', $topic)}}" class="btn btn-outline-default">{{ $topic->title }}</a></td>
+                                                <td>
+                                                    @if ($topic->game)
+                                                        <h4 class="bg-success text-white py-2">Tiene juego</h4>
+                                                    @else
+                                                        <h4 class="bg-danger text-white py-2">No tiene juego</h4>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <h4>No tiene temáticas registradas</h4>
+                                            </tr>
+
+        @endforelse
+        </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        @endif
+
     </section>
 @endsection
 @section('scripts')
-<script>
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-
-</script>
-@if (session()->has('update_complete'))
     <script>
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: '¡Éxito!',
-            text: "{{ session('update_complete') }}",
-            showConfirmButton: false,
-            timer: 1500
-        })
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
 
     </script>
-@endif
-@if (session()->has('update_failed'))
+    @if (session()->has('update_complete'))
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '¡Éxito!',
+                text: "{{ session('update_complete') }}",
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        </script>
+    @endif
+    @if (session()->has('update_failed'))
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: "¡Error!",
+                text: "{{ session('update_failed') }}",
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        </script>
+    @endif
     <script>
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: "¡Error!",
-            text: "{{ session('update_failed') }}",
-            showConfirmButton: false,
-            timer: 1500
-        })
+        $('.delete-role').on('click', function() {
+            var role = $(this).attr('data-role');
+            var usuario = "{{ $usuario->email }}";
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡El rol " + role.toUpperCase() + " Será eliminado!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Si, eliminalo!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.post("{{ route('user.deleteRole') }}", {
+                        _method: 'delete',
+                        usuario: usuario,
+                        role: role
+                    }).then(response => {
+                        console.log(response.data);
+                        Swal.fire(
+                            'Eliminado!',
+                            response.data,
+                            'success'
+                        )
+
+                    });
+                    var fila = $(this).attr('data-tr');
+                    $("#fila" + fila).remove();
+                }
+            })
+        });
 
     </script>
-@endif
-<script>
-    $('.delete-role').on('click', function() {
-        var role = $(this).attr('data-role');
-        var usuario = "{{ $usuario->email }}";
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡El rol " + role.toUpperCase() + " Será eliminado!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '¡Si, eliminalo!',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios.post("{{ route('user.deleteRole') }}", {
-                    _method: 'delete',
-                    usuario: usuario,
-                    role: role
-                }).then(response => {
-                    console.log(response.data);
-                    Swal.fire(
-                        'Eliminado!',
-                        response.data,
-                        'success'
-                    )
-
-                });
-                var fila = $(this).attr('data-tr');
-                $("#fila" + fila).remove();
-            }
-        })
-    });
-
-</script>
 @endsection

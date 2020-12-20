@@ -18,10 +18,10 @@
                             <div class="col-12 col-md-7">
 
                                 @if (session('role') != 'capacitante')
-                                    <h3 class="card-title font-weight-bold">Capacitador</h3>
+                                    <h3 class="card-title font-weight-bold">Docente</h3>
                                     @if ($tema->user)
                                         <a href="{{ route('user.show', $tema->user) }}">
-                                            <p class="card-text font-weight-bold">{{ $tema->user->fullname() }}</p>
+                                            <p class="card-text font-weight-bold text-capitalize">{{ $tema->user->fullname() }}</p>
                                         </a>
                                     @else
                                         <div class="row justify-content-center">
@@ -134,7 +134,7 @@
                                 <input type="hidden" name="topic" value="{{ $tema->id }}">
                                 <div class="form-group">
                                     <label for="capacitador" class="font-weight-bold">Capacitador:</label>
-                                    <select class="form-control @error('capacitador') is-invalid @enderror"
+                                    <select class="form-control text-capitalize  @error('capacitador') is-invalid @enderror"
                                         name="capacitador" id="capacitador">
                                         <option value="-1">Seleccione un capacitador</option>
                                         @foreach ($capacitadores as $capacitador)

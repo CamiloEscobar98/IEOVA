@@ -13,7 +13,7 @@
                         <thead class="bg-primary font-weight-bold text-center text-white">
                             <tr>
                                 <th class="bg-translucent-default">Foto</th>
-                                <th class="bg-translucent-white">Encargado</th>
+                                <th class="bg-translucent-white">Docente encargado</th>
                                 <th class="bg-translucent-default">Título</th>
                                 <th class="bg-translucent-white" style="width: 5%">...</th>
                             </tr>
@@ -78,10 +78,10 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="capacitador" class="font-weight-bold">Capacitador:</label>
+                                <label for="capacitador" class="font-weight-bold">Docente:</label>
                                 <select class="form-control @error('capacitador') is-invalid @enderror" name="capacitador"
                                     id="capacitador">
-                                    <option value="-1">Seleccione un capacitador</option>
+                                    <option value="-1">Seleccione un docente</option>
                                     @foreach ($capacitadores as $capacitador)
                                         <option value="{{ $capacitador->email }}">{{ $capacitador->fullname() }}</option>
                                     @endforeach

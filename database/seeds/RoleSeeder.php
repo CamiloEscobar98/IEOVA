@@ -16,11 +16,11 @@ class RoleSeeder extends Seeder
         ]);
 
         \App\Models\Role::create([
-            'name' => 'capacitador'
+            'name' => 'estudiante'
         ]);
 
         \App\Models\Role::create([
-            'name' => 'capacitante'
+            'name' => 'docente'
         ]);
     }
 }

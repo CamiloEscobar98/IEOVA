@@ -1,11 +1,11 @@
 @extends('layouts.argon')
-@section('title', 'Capacitantes')
+@section('title', 'Estudiantes')
 @section('content')
     @include('layouts.argon_nav_user_2')
     <div class="container-fluid mb-4 mt-5">
         <div class="card shadow">
             <div class="card-header bg-translucent-white">
-                <h2 class="my-0 font-weight-bold mt-3">Lista de capacitantes</h2>
+                <h2 class="my-0 font-weight-bold mt-3">Lista de Estudiantes</h2>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -57,14 +57,14 @@
             <div class="col-12 col-md-8">
                 <div class="card shadow">
                     <div class="card-header bg-translucent-white">
-                        <h2 class="my-0 font-weight-bold mt-2">Registrar Capacitante</h2>
+                        <h2 class="my-0 font-weight-bold mt-2">Registrar Estudiante</h2>
                     </div>
                     <div class="card-body">
                         <p class="card-title font-weight-bold">Por favor llena toda la información para registrar el
-                            capacitante.</p>
+                            Estudiante.</p>
                         <form action="{{ route('user.create') }}" method="post">
                             @csrf
-                            <input type="hidden" name="role" value="capacitante">
+                            <input type="hidden" name="role" value="estudiante">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -137,10 +137,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
+            {{-- <div class="col-12 col-md-4">
                 <div class="card shadow">
                     <div class="card-header bg-translucent-white">
-                        <h2 class="my-0 font-weight-bold mt-2">Cargar Capacitantes</h2>
+                        <h2 class="my-0 font-weight-bold mt-2">Cargar Estudiantes</h2>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('user.massive') }}" method="post" enctype="multipart/form-data">
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         @include('layouts.argon_footer')
     </div>

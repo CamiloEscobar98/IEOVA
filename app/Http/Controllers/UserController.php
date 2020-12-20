@@ -38,9 +38,13 @@ class UserController extends Controller
 
     public function show(\App\User $usuario)
     {
-        $roles = \App\Models\Role::all();
-        $documents_type = \App\Models\Document_type::all();
-        return view('auth.profiles.usuario', ['usuario' => $usuario, 'document_types' => $documents_type, 'roles' => $roles]);
+        $data =  [
+            'usuario' => $usuario,
+            'document_types' => \App\Models\Document_type::all(),
+            'roles' => \App\Models\Role::all(),
+            'topics' =>  $usuario->topics()->paginate(5)
+        ];
+        return view('auth.profiles.usuario', $data);
     }
 
     public function update(\App\Http\Requests\User\UpdateUserRequest $request)
@@ -184,7 +188,7 @@ class UserController extends Controller
 
     public function myTopics(Request $request)
     {
-        $request->user()->authorizeRolesSession(['capacitador']);
+        $request->user()->authorizeRolesSession(['estudiante', 'docente']);
         $user = \App\User::find(Auth()->user()->id);
         $topics = $user->topics;
         return view('auth.lists.mis-tematicas', ['topics' => $topics]);
@@ -192,7 +196,7 @@ class UserController extends Controller
 
     public function topics(Request $request)
     {
-        $request->user()->authorizeRolesSession(['capacitante']);
+        $request->user()->authorizeRolesSession(['estudiante']);
         $topics = \App\Models\Topic::paginate(5);
         return view('auth.lists.tematicas', [
             'topics' => $topics

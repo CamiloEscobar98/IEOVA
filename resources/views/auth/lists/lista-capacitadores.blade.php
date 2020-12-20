@@ -1,5 +1,5 @@
 @extends('layouts.argon')
-@section('title', 'Capacitadores')
+@section('title', 'Docentes')
 @section('content')
     @include('layouts.argon_nav_user_2')
     <div class="container-fluid mb-4 mt-5">
@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card shadow">
                     <div class="card-header bg-translucent-white">
-                        <h2 class="my-0 mt-3 font-weight-bold">Lista de capacitadores</h2>
+                        <h2 class="my-0 mt-3 font-weight-bold">Lista de Docentes</h2>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -60,10 +60,10 @@
             <div class="col-12">
                 <div class="card shadow">
                     <div class="card-header bg-translucent-white">
-                        <h1 class="mt-4 font-weight-bold">Registrar capacitador</h1>
+                        <h1 class="mt-4 font-weight-bold">Registrar Docente</h1>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">Por favor llena toda la información para registrar el capacitador.</p>
+                        <p class="card-title">Por favor llena toda la información para registrar el docente.</p>
                         <form action="{{ route('user.create') }}" method="post">
                             @csrf
                             <div class="row">
@@ -96,9 +96,9 @@
                                         <div class="col-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="document" class="font-weight-bold">Documento:</label>
-                                                <input type="text" name="document" id="document"
+                                                <input type="number" name="document" id="document"
                                                     class="form-control @error('document') is-invalid @enderror"
-                                                    value="{{ old('document') }}" aria-describedby="helpId" maxlength="15"
+                                                    value="{{ old('document') }}" aria-describedby="helpId" minlength="8"
                                                     onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                                                 @error('document')
                                                     <small id="helpId"
@@ -144,7 +144,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="role" value="capacitador">
+                            <input type="hidden" name="role" value="docente">
                             <div class="form-group float-right">
                                 <button type="submit" class="btn btn-outline-primary">
                                     Registrar

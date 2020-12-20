@@ -34,8 +34,7 @@
     <!-- Navbar -->
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
         <div class="container">
-            <h4 class="text-white font-weight-bold">Plataforma del Sistema de Gestión de la Salud y la Seguridad en el
-                Trabajo</h4>
+            <h4 class="text-white font-weight-bold">Objeto Virtual de Aprendizaje Informática Educativa</h4>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
                 aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -66,7 +65,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('login') }}" class="nav-link">
-                            <span class="nav-link-inner--text">Login</span>
+                            <span class="nav-link-inner--text">Iniciar Sesión</span>
                         </a>
                     </li>
                 </ul>
@@ -77,7 +76,7 @@
     <!-- Main content -->
     <div class="main-content">
         <!-- Header -->
-        <div class="header bg-gradient-success py-7 py-lg-8 pt-lg-9">
+        <div class="header bg-gradient-info py-7 py-lg-8 pt-lg-9">
             <div class="container">
                 <div class="header-body text-center mb-2">
                     <div class="row justify-content-center">
@@ -176,8 +175,8 @@
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-6">
                     <div class="copyright text-center text-xl-left text-muted">
-                        &copy; 2020 <a href="#" class="font-weight-bold ml-1 text-success"
-                            target="_blank">SGSST</a>
+                        &copy; 2020 <a href="#" class="font-weight-bold ml-1 text-info"
+                            target="_blank">IEOVA</a>
                     </div>
                 </div>
             </div>

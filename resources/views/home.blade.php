@@ -93,7 +93,7 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Perfil de usuario</h4>
-                        @include('layouts.user.update-form')
+                        @include('layouts.User.update-form')
                     </div>
                 </div>
             </div>
