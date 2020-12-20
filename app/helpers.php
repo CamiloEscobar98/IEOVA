@@ -13,10 +13,10 @@ function isFirst($num)
 function checkInput($role)
 {
     switch ($role) {
-        case 'capacitador':
+        case 'docente':
             return '';
             break;
-        case 'capacitante':
+        case 'estudiante':
             return 'readonly';
             break;
         default:
@@ -27,10 +27,10 @@ function checkInput($role)
 function checkColGame($role)
 {
     switch ($role) {
-        case 'capacitador':
+        case 'docente':
             return 'col-md-6';
             break;
-        case 'capacitante':
+        case 'estudiante':
             return 'col-md-10';
             break;
         default:
@@ -42,10 +42,10 @@ function checkColGame($role)
 function checkColTopic($role)
 {
     switch ($role) {
-        case 'capacitador':
+        case 'docente':
             return 'col-md-7';
             break;
-        case 'capacitante':
+        case 'estudiante':
             return 'col-md-8';
             break;
         default:
@@ -56,10 +56,10 @@ function checkColTopic($role)
 function checkColCapsule($role)
 {
     switch ($role) {
-        case 'capacitador':
+        case 'docente':
             return 'col-xl-8';
             break;
-        case 'capacitante':
+        case 'estudiante':
             return 'col-xl-12';
             break;
         default:

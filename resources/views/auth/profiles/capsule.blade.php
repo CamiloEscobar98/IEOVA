@@ -23,7 +23,7 @@
                             <h2 class="mt-3 font-weight-bold">Información Cápsula</h2>
                         </div>
                         <div class="card-body">
-                            @if (session('role') != 'capacitante')
+                            @if (session('role') != 'estudiante')
                                 <p class="card-text">Para actualizar la cápsula, llena las credenciales</p>
                             @endif
                             <form action="{{ route('capsule.update') }}" method="post">
@@ -41,7 +41,7 @@
                                             class="font-weight-bold bg-danger py-y text-white">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                @if (session('role') != 'capacitante')
+                                @if (session('role') != 'estudiante')
                                     <div class="form-group">
                                         <label for="video" class="font-weight-bold">Video</label>
                                         <input type="text" name="video" id="video"
@@ -63,7 +63,7 @@
                                             class="font-weight-bold bg-danger py-y text-white">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                @if (session('role') != 'capacitante')
+                                @if (session('role') != 'estudiante')
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block btn-default">Actualizar</button>
                                     </div>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                @if (session('role') != 'capacitante')
+                @if (session('role') != 'estudiante')
                     <div class="col-12 col-md-12 col-lg-12 col-xl-4 mt-4">
                         <div class="card shadow">
                             <div class="card-header bg-translucent-white">

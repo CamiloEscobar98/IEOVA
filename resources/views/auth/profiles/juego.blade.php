@@ -49,7 +49,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-12 {{ checkColGame(session('role')) }}">
-                @if (session('role') != 'capacitante')
+                @if (session('role') != 'estudiante')
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header bg-translucent-white">
@@ -116,7 +116,7 @@
                                         class="bg-danger text-white font-weight-bold py-1 px-1">{{ $message }}</small>
                                 @enderror
                             </div>
-                            @if (session('role') != 'capacitante')
+                            @if (session('role') != 'estudiante')
                                 <div class="form-group float-right">
                                     <button type="submit" class="btn btn-outline-primary">Actualizar</button>
                                 </div>

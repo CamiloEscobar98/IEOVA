@@ -17,7 +17,7 @@
                             </div>
                             <div class="col-12 col-md-7">
 
-                                @if (session('role') != 'capacitante')
+                                @if (session('role') != 'estudiante')
                                     <h3 class="card-title font-weight-bold">Docente</h3>
                                     @if ($tema->user)
                                         <a href="{{ route('user.show', $tema->user) }}">
@@ -59,7 +59,7 @@
                                     <input type="hidden" name="topic" value="{{ $tema->id }}">
 
 
-                                    @if (session('role') != 'capacitante')
+                                    @if (session('role') != 'estudiante')
                                         <div class="form-group float-left">
                                             <button type="submit"
                                                 class="btn btn-block btn-outline-primary">Actualizar</button>
@@ -99,7 +99,7 @@
                                                     <a href="{{ route('capsule.show', $capsula) }}" type="button"
                                                         class="btn btn-outline-primary mr-2"><i class="fa fa-eye"
                                                             aria-hidden="true"></i></a>
-                                                    @if (session('role') != 'capacitante')
+                                                    @if (session('role') != 'estudiante')
                                                         <button type="button" class="btn btn-outline-danger  delete-capsule"
                                                             data-tr="{{ $loop->iteration }}" data-title="{{ $capsula->title }}"
                                                             data-capsule="{{ $capsula->id }}"><i class="fa fa-trash"
@@ -158,7 +158,7 @@
                 </div>
             @endif
         </div>
-        @if (session('role') != 'capacitante')
+        @if (session('role') != 'estudiante')
             <div class="card shadow">
                 <div class="card-header bg-translucent-white">
                     <h2 class="font-weight-bold mt-3">Progreso de Capacitantes</h2>
@@ -192,7 +192,7 @@
     @endif
 
     @if ($tema->game == null)
-        @if (session('role') != 'capacitante')
+        @if (session('role') != 'estudiante')
             <div class="card shadow">
                 <div class="card-header bg-translucent-white">
                     <h2 class="font-weight-bold mt-3">Registrar Actividad Interactiva</h2>
@@ -237,9 +237,9 @@
         @if ($tema->game->gameable->words()->count() != null)
             <button class="btn btn-outline-primary" onclick="mostrar_ocultar_juego('play_game')">Jugar</button>
 
-            @if (session('role') != 'capacitante')
+            @if (session('role') != 'estudiante')
                 <a href="{{ route('game.show', $tema->game) }}" class="btn btn-outline-primary">Ver
-                    juego</a>
+                    Actividad Interactiva</a>
                 <button type="button" class="btn float-right btn-outline-danger delete-game w-25"
                     data-game="{{ $tema->game->id }}">Eliminar</button>
             @endif
@@ -249,9 +249,9 @@
                     <strong>Actividad Interactiva no completada</strong>
                 </div>
             </div>
-            @if (session('role') != 'capacitante')
+            @if (session('role') != 'estudiante')
                 <a href="{{ route('game.show', $tema->game) }}" class="btn float-right btn-outline-primary w-25">Ver
-                    juego</a>
+                    Actividad Interactiva</a>
                 <button type="button" class="btn float-right btn-outline-danger delete-game w-25"
                     data-game="{{ $tema->game->id }}">Eliminar</button>
             @endif

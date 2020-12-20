@@ -13,7 +13,7 @@ class CreateGameRequest extends FormRequest
      */
     public function authorize()
     {
-        return session('role') == 'administrador' || session('role') == 'capacitador';
+        return session('role') == 'administrador' || session('role') == 'docente';
     }
 
     /**
