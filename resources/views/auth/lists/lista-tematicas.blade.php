@@ -12,7 +12,6 @@
                     <table class="table table-striped table-hover">
                         <thead class="bg-primary font-weight-bold text-center text-white">
                             <tr>
-                                <th class="bg-translucent-default">Foto</th>
                                 <th class="bg-translucent-white">Docente encargado</th>
                                 <th class="bg-translucent-default">Título</th>
                                 <th class="bg-translucent-white" style="width: 5%">...</th>
@@ -21,9 +20,6 @@
                         <tbody>
                             @forelse ($tematicas as $tema)
                                 <tr class="text-center" id="fila{{ $loop->iteration }}">
-                                    <td> <img src="{{ asset($tema->image->fullimage()) }}"
-                                            class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} mx-auto d-block"
-                                            alt="" width="50vh"></td>
                                     <td>
                                         @if ($tema->user)
                                             <a href="{{ route('user.show', $tema->user) }}">{{ $tema->user->fullname() }}</a>

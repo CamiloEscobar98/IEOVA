@@ -80,7 +80,6 @@
                         <h2 class="mt-3">Perfil de usuario</h2>
                     </div>
                     <div class="card-body">
-
                         <p class="card-text">Actualiza tu información</p>
                         @include('layouts.user.update-form-2')
                         <hr class="bg-primary my-4">

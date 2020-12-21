@@ -178,14 +178,12 @@ window.onload = function () {
     }
     // Play
     play = function () {
-        let url = 'http://sgsst.com.devel/';
-        categories = ["manchester", "milan", "madrid", "amsterdam", "prague"];
         var hangma_id = $tmp = document.getElementById('hangman_id').value;
         // console.log(hangma_id);
         $.ajax({
             async: false,
             type: 'POST',
-            url: url + 'api/game/hangman',
+            url: '/api/game/hangman',
             data: { id: hangma_id },
             dataType: 'json'
         }).done(function (data) {

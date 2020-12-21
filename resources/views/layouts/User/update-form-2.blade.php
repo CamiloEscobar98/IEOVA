@@ -2,7 +2,9 @@
     @csrf
     @method('put')
     @if (session('role') != 'administrador')
-        <input type="hidden" name="email" value="{{ $usuario->email }}">
+        <input type="hidden" name="usuario" value="{{ $usuario->email }}">
+        @else
+        <input type="hidden" name="usuario" value="{{ $usuario->email }}">
     @endif
     <div class="row">
         <div class="col-md-6">

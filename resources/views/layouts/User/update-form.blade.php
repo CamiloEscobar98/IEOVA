@@ -2,8 +2,11 @@
     @csrf
     @method('put')
     @if (session('role') != 'administrador')
-        <input type="hidden" name="email" value="{{ Auth()->user()->email }}">
+        <input type="hidden" name="usuario" value="{{ Auth()->user()->email }}">
+    @else
+        <input type="hidden" name="usuario" value="{{ Auth()->user()->email }}">
     @endif
+    {{ auth()->user()->email }}
     <div class="row">
         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
             <div class="form-group">
@@ -39,8 +42,8 @@
         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
             <div class="form-group">
                 <label for="email" class="font-weight-bold">Correo electrónico:</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" aria-describedby="helpId"
-                    placeholder="Escribe tu nombre.." value="{{ Auth()->user()->email }}"
+                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email"
+                    aria-describedby="helpId" placeholder="Escribe tu nombre.." value="{{ Auth()->user()->email }}"
                     {{ session('role') != 'administrador' ? 'disabled' : '' }}>
                 @error('email')
                     <small id="helpId"
@@ -49,8 +52,9 @@
             </div>
             <div class="form-group">
                 <label for="birthday" class="font-weight-bold">Fecha de nacimiento:</label>
-                <input type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" id="birthday" aria-describedby="helpId"
-                    value="{{ Auth()->user()->birthday }}" {{ session('role') != 'administrador' ? 'disabled' : '' }}>
+                <input type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday"
+                    id="birthday" aria-describedby="helpId" value="{{ Auth()->user()->birthday }}"
+                    {{ session('role') != 'administrador' ? 'disabled' : '' }}>
                 @error('birthday')
                     <small id="helpId"
                         class="form-text bg-danger font-weight-bold py-2 text-white px-2">{{ $message }}</small>
@@ -58,8 +62,9 @@
             </div>
             <div class="form-group">
                 <label for="document" class="font-weight-bold">Documento:</label>
-                <input type="text" class="form-control @error('document') is-invalid @enderror" name="document" id="document" aria-describedby="helpId"
-                    placeholder="Escribe tu nombre.." value="{{ Auth()->user()->document->document }}"
+                <input type="text" class="form-control @error('document') is-invalid @enderror" name="document"
+                    id="document" aria-describedby="helpId" placeholder="Escribe tu nombre.."
+                    value="{{ Auth()->user()->document->document }}"
                     {{ session('role') != 'administrador' ? 'disabled' : '' }}>
                 @error('document')
                     <small id="helpId"

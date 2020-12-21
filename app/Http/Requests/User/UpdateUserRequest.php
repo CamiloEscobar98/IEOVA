@@ -23,8 +23,9 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        $usuario = \App\User::where('email', $this->email)->first();
+        $usuario = \App\User::where('email', $this->usuario)->first();
         $rules = [
+            'usuario' => ['required', 'exists:users,email'],
             'phone' => ['required', 'string'],
             'address' => ['required', 'string'],
             'email' => ['required', 'email', 'unique:users,email,' . $usuario->id]

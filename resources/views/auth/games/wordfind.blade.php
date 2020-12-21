@@ -31,7 +31,7 @@
     $.ajax({
         async: false,
         type: 'POST',
-        url: url + 'api/game/wordfind',
+        url: '/api/game/wordfind',
         data: {
             id: wordfind
         },

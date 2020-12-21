@@ -158,7 +158,7 @@ class UserController extends Controller
 
     private function updateUser($validated)
     {
-        $usuario = \App\User::where('email', $validated['email'])->first();
+        $usuario = \App\User::where('email', $validated['usuario'])->first();
         $usuario->update($validated);
         $usuario->document->update($validated);
         return $usuario;

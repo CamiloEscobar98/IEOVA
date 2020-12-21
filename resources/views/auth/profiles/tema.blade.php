@@ -122,9 +122,9 @@
                     <div class="card shadow">
                         <div class="card-header bg-translucent-white">
                             @if ($tema->user)
-                                <h2 class="font-weight-bold mt-3">Cambiar Capacitador</h2>
+                                <h2 class="font-weight-bold mt-3">Cambiar Docente</h2>
                             @else
-                                <h2 class="font-weight-bold mt-3">Asignar Capacitador</h2>
+                                <h2 class="font-weight-bold mt-3">Asignar Docente</h2>
                             @endif
                         </div>
                         <div class="card-body">
@@ -133,10 +133,10 @@
                                 @method('patch')
                                 <input type="hidden" name="topic" value="{{ $tema->id }}">
                                 <div class="form-group">
-                                    <label for="capacitador" class="font-weight-bold">Capacitador:</label>
+                                    <label for="capacitador" class="font-weight-bold">Docente:</label>
                                     <select class="form-control text-capitalize  @error('capacitador') is-invalid @enderror"
                                         name="capacitador" id="capacitador">
-                                        <option value="-1">Seleccione un capacitador</option>
+                                        <option value="-1">Seleccione un docente</option>
                                         @foreach ($capacitadores as $capacitador)
 
                                             <option value="{{ $capacitador->email }}">
@@ -161,7 +161,7 @@
         @if (session('role') != 'estudiante')
             <div class="card shadow">
                 <div class="card-header bg-translucent-white">
-                    <h2 class="font-weight-bold mt-3">Progreso de Capacitantes</h2>
+                    <h2 class="font-weight-bold mt-3">Progreso de Estudiantes</h2>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
